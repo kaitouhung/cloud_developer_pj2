@@ -50,11 +50,11 @@ import { Request, Response } from "express";
       const pathImage = await filterImageFromURL(image_url);
 
       return res.status(200).sendFile(pathImage, () => {
-        deleteLocalFiles[pathImage];
+        deleteLocalFiles([pathImage]);
       });
-    } catch (error: any) {
+    } catch (error) {
       return res.status(500).json({
-        message: error.message,
+        message: error,
       });
     }
   });
