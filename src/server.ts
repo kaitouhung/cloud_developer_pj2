@@ -52,23 +52,12 @@ import { Request, Response } from "express";
       return res.status(200).sendFile(pathImage, () => {
         deleteLocalFiles([pathImage]);
       });
-    } catch (error) {
+    } catch (error: any) {
       return res.status(500).json({
-        message: error,
+        message: error.message,
       });
     }
   });
-
-  // app.use((err: any, req: any, res: any) => {
-  //   const statusCode = err?.statusCode || 500;
-  //   const status = err.status || "error";
-
-  //   return res.status(statusCode).json({
-  //     status: status,
-  //     message: err.message,
-  //     stack: err.stack,
-  //   });
-  // });
 
   // Start the Server
   app.listen(port, () => {
