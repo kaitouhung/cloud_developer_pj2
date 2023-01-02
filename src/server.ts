@@ -52,9 +52,9 @@ import { Request, Response } from "express";
       return res.status(200).sendFile(pathImage, () => {
         deleteLocalFiles([pathImage]);
       });
-    } catch (error: any) {
+    } catch (error) {
       return res.status(500).json({
-        message: error.message,
+        error: error,
       });
     }
   });
