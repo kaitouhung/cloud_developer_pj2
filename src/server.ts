@@ -39,7 +39,7 @@ import { Request, Response } from "express";
 
   app.get("/filter-image", async (req: Request, res: Response) => {
     try {
-      const { image_url } = req.query;
+      const { image_url }: { image_url: string } = req.query;
 
       if (!image_url) {
         return res.status(400).json({
